@@ -8,13 +8,8 @@ module.exports = {
       legacyDecorators: true
     }
   },
-  plugins: [
-    'ember'
-  ],
-  extends: [
-    'eslint:recommended',
-    'plugin:ember/recommended'
-  ],
+  plugins: ['ember'],
+  extends: ['standard', 'plugin:ember/recommended'],
   env: {
     browser: true
   },
@@ -25,10 +20,12 @@ module.exports = {
     // node files
     {
       files: [
+        '.commitlintrc.js',
         '.eslintrc.js',
         '.template-lintrc.js',
         'ember-cli-build.js',
         'index.js',
+        'lint-staged.config.js',
         'testem.js',
         'blueprints/*/index.js',
         'config/**/*.js',
@@ -48,9 +45,13 @@ module.exports = {
         node: true
       },
       plugins: ['node'],
-      rules: Object.assign({}, require('eslint-plugin-node').configs.recommended.rules, {
-        // add your custom rules and overrides for node files here
-      })
+      rules: Object.assign(
+        {},
+        require('eslint-plugin-node').configs.recommended.rules,
+        {
+          // add your custom rules and overrides for node files here
+        }
+      )
     }
   ]
-};
+}
